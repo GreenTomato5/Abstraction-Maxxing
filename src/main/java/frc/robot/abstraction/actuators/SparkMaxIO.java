@@ -1,4 +1,4 @@
-package frc.robot.motorcontrollers;
+package frc.robot.abstraction.actuators;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -7,9 +7,9 @@ import java.util.function.DoubleSupplier;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import frc.robot.interfaces.MotorControllerIO;
+import frc.robot.abstraction.interfaces.ActuatorIO;
 
-public class SparkMaxIO implements MotorControllerIO {
+public class SparkMaxIO implements ActuatorIO {
     CANSparkMax motor;
     RelativeEncoder encoder;
 
@@ -28,10 +28,6 @@ public class SparkMaxIO implements MotorControllerIO {
 
     public DoubleSupplier getPositionRad() {
         return () -> encoder.getPosition();
-    }
-
-    public void setSpeed(double speed) {
-        motor.set(speed);
     }
 
     public void setVolts(double volts) {
