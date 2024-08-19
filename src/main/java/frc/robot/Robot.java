@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends TimesliceRobot {
   /** Robot constructor. */
+  // Nah this is peak, timeslice > fodder
   public Robot() {
     // Run robot periodic() functions for 5 ms, and run controllers every 10 ms
     super(0.005, 0.01);
