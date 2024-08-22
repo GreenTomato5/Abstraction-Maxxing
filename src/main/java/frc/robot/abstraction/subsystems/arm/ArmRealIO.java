@@ -2,7 +2,6 @@ package frc.robot.abstraction.subsystems.arm;
 
 import edu.wpi.first.math.controller.PIDController;
 import frc.robot.abstraction.actuators.MotorGroupIO;
-import frc.robot.abstraction.actuators.MotorIO;
 
 public class ArmRealIO implements ArmIO {
 
