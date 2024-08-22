@@ -25,8 +25,12 @@ public class TalonFXMotorGroup implements MotorGroupIO {
         leader.setVoltage(volts);
     }
 
-    public void addFollower(String motorName, int motorID, boolean opposeLeader) {
+    public double getLeaderPosRad() {
+        return leader.getPosition().getValueAsDouble() * (2 * Math.PI);
+    }
+
+    public void addFollower(String motorName, int motorID, boolean invertMotor) {
         motors.put(motorName, new TalonFX(motorID));
-        motors.get(motorName).setControl(new Follower(leaderID, opposeLeader));
+        motors.get(motorName).setControl(new Follower(leaderID, invertMotor));
     }
 }

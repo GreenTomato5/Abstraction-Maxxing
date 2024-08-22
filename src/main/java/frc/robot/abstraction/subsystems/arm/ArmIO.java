@@ -4,9 +4,11 @@ public interface ArmIO {
 
     public default void setPosition(Double radians) {}
 
+    public default void addFollower(String followerName, int followerID, boolean invertFollower) {}
+
     public default void stop() {}
 
-    public default double getPositionRads() {
-        return 0;
-    }
+    public default void setPoistion() {}
+
+    public default void setVolts() {}
 }
