@@ -7,8 +7,6 @@ import java.util.function.DoubleSupplier;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import frc.robot.abstraction.interfaces.MotorIO;
-
 public class SparkMaxIO implements MotorIO {
     CANSparkMax motor;
     RelativeEncoder encoder;
@@ -32,5 +30,13 @@ public class SparkMaxIO implements MotorIO {
 
     public void setVolts(double volts) {
         motor.setVoltage(volts);
+    }
+    
+    public CANSparkMax getMotor() {
+        return motor;
+    }
+
+    public void followMotor(SparkMaxIO leader, Boolean inverted) {
+        motor.follow(leader.getMotor(), inverted);
     }
 }

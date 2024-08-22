@@ -1,4 +1,4 @@
-package frc.robot.abstraction.interfaces;
+package frc.robot.abstraction.actuators;
 
 import java.util.function.DoubleSupplier;
 
@@ -12,4 +12,12 @@ public interface MotorIO {
     }
 
     public default void setVolts(double volts) {}
+
+    public default void followMotor() {
+
+    }
+
+    public default MotorIO getIO() {
+        return new MotorIO() {};
+    }
 }

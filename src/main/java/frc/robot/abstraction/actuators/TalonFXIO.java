@@ -2,9 +2,8 @@ package frc.robot.abstraction.actuators;
 
 import java.util.function.DoubleSupplier;
 
+import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.hardware.TalonFX;
-
-import frc.robot.abstraction.interfaces.MotorIO;
 
 public class TalonFXIO implements MotorIO {
     TalonFX motor;
@@ -23,5 +22,9 @@ public class TalonFXIO implements MotorIO {
 
     public void setVolts(double volts) {
         motor.setVoltage(volts);
+    }
+
+    public void followMotor(int leaderID, Boolean reverseMotor) {
+        motor.setControl(new Follower(leaderID, reverseMotor));
     }
 }
