@@ -7,9 +7,9 @@ import java.util.function.DoubleSupplier;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import frc.robot.abstraction.interfaces.ActuatorIO;
+import frc.robot.abstraction.interfaces.MotorIO;
 
-public class SparkMaxIO implements ActuatorIO {
+public class SparkMaxIO implements MotorIO {
     CANSparkMax motor;
     RelativeEncoder encoder;
 

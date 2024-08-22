@@ -4,9 +4,9 @@ import java.util.function.DoubleSupplier;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import frc.robot.abstraction.interfaces.ActuatorIO;
+import frc.robot.abstraction.interfaces.MotorIO;
 
-public class TalonFXIO implements ActuatorIO {
+public class TalonFXIO implements MotorIO {
     TalonFX motor;
 
     public TalonFXIO(int motorId) {
