@@ -1,5 +1,6 @@
 package frc.robot.abstraction.subsystems.arm;
 
-public class ArmIO {
-    
+public interface ArmIO {
+
+    public default void setPosition(Double radians) {}
 }

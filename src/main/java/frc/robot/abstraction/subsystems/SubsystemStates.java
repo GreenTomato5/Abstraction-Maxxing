@@ -3,36 +3,29 @@ package frc.robot.abstraction.subsystems;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class SubsystemStates {
+public class SubsystemStates {
     
     private final Map<String, State> states = new HashMap<>();
+    State state;
 
     // This is optimal PPHerage, trust
     
-    public SubsystemStates() {
-
+    public SubsystemStates(String defaultStateName, State defaultState) {
+        this.state = defaultState;
+        states.put(defaultStateName, defaultState);
     }
 
-    public class State {
-        protected double setPoint;
-        protected String stateString;
-
-        State (String stateString, double setPoint) {
-            this.setPoint = setPoint;
-            this.stateString = stateString;
-        }
-        
-        public String getStateString() {
-            return stateString;
-        }
-
-        public double getSetPoint() {
-            return setPoint;
-        }
+    // State Name is prog facing, state string is mech facing
+    public void addState(String stateName, State state) {
+        states.put(stateName, state);
     }
 
-    public void addState(String stateName, String stateString, double setPoint) {
-        states.put(stateName, new State(stateString, setPoint));
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return this.state;
     }
 
     // What should this do?
