@@ -26,6 +26,10 @@ public abstract class Subsystem {
         runState();
     }
 
+    public String getName() {
+        return subsytemName;
+    }
+
     public void setState(State state) {
         this.state = state;
     }

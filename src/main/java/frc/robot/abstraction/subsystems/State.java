@@ -11,6 +11,11 @@ public class State {
         this.setPoint = setPoint;
         this.stateString = stateString;
     }
+
+    public State (String stateString) {
+        this.setPoint = 0;
+        this.stateString = stateString;
+    }
     
     public String getStateString() {
         return stateString;

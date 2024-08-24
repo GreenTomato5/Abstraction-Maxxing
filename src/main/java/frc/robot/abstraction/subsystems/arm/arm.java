@@ -2,7 +2,6 @@ package frc.robot.abstraction.subsystems.arm;
 
 import java.util.Map;
 
-import frc.robot.Constants;
 import frc.robot.Utils.MotorConfigs;
 import frc.robot.abstraction.subsystems.State;
 import frc.robot.abstraction.subsystems.Subsystem;
