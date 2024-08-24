@@ -6,11 +6,11 @@ import frc.robot.abstraction.actuators.MotorGroupIO;
 public class ArmRealIO implements ArmIO {
 
     private MotorGroupIO motorGroup;
-    protected PIDController armController;
+    protected PIDController controller;
 
-    public ArmRealIO(MotorGroupIO motorGroup, int numFollwers) {
+    public ArmRealIO(MotorGroupIO motorGroup) {
         this.motorGroup = motorGroup;
-        this.armController = new PIDController(0, 0, 0);
+        this.controller.setPID(0, 0, 0);
     }
 
     public void setVolts(double volts) {
@@ -18,7 +18,7 @@ public class ArmRealIO implements ArmIO {
     }
 
     public void setPosition(double setPointRads) {
-        setVolts(armController.calculate(motorGroup.getLeaderPosRad(), setPointRads));
+        setVolts(controller.calculate(motorGroup.getLeaderPosRad(), setPointRads));
     }
 
     public void addFollower(String followerName, int followerID, boolean invertFollower) {
@@ -27,7 +27,7 @@ public class ArmRealIO implements ArmIO {
     }
 
     public void configurePID(double kP, double kI, double kD) {
-        armController.setPID(kP, kI, kD);
+        controller.setPID(kP, kI, kD);
     }
 
     public void stop() {

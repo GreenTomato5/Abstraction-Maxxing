@@ -1,8 +1,7 @@
 package frc.robot.abstraction.subsystems.arm;
 
 public interface ArmIO {
-
-    public default void setPosition(Double radians) {}
+    public default void setPosition(Double setPointRads) {}
 
     public default void addFollower(String followerName, int followerID, boolean invertFollower) {}
 
