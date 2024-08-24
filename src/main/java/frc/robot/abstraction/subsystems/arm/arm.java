@@ -12,7 +12,6 @@ public class Arm extends Subsystem {
      * This subsystem is for a single DOF arm that can pivor up and down.
      * If you have a weird arm that has more than 1 DOF too bad so sad.
      */
-    protected int numMotors;
     protected ArmIO io;
 
     public Arm(String subsystemName, State defaultState, ArmIO io, Map<String, MotorConfigs> followerConfigs) {
@@ -30,13 +29,13 @@ public class Arm extends Subsystem {
         io.configurePID(kP, kI, kD);
     }
 
+    public void stop() {
+        io.stop();
+    }
+
     @Override
     public void runState() {
         io.setPoistion(getState().getSetPoint());
-    }
-
-    public void stop() {
-        io.stop();
     }
 
     // I realized run state is kinda useless again >:( because like timeslice is good

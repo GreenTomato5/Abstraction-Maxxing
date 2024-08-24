@@ -12,6 +12,8 @@ public class TalonFXMotorGroup implements MotorGroupIO {
     String leaderName;
     int leaderID;
 
+    // TODO: Something with CTRE sim or something idrk
+
     public TalonFXMotorGroup(String leaderName, int leaderID, Boolean invertLeader) {
         this.leaderName = leaderName;
         this.leaderID = leaderID;

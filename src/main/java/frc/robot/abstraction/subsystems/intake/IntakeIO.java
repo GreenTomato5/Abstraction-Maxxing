@@ -1,13 +1,11 @@
-package frc.robot.abstraction.subsystems.arm;
+package frc.robot.abstraction.subsystems.intake;
 
-public interface ArmIO {
-    public default void setPosition(Double setPointRads) {}
-
+public interface IntakeIO {
     public default void addFollower(String followerName, int followerID, boolean invertFollower) {}
 
     public default void stop() {}
 
-    public default void setPoistion(double setPointRads) {}
+    public default void setVelocityRPS(double setPointRPS) {}
 
     public default void setVolts(double volts) {}
 
