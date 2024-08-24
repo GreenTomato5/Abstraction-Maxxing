@@ -7,7 +7,9 @@ public interface ArmIO {
 
     public default void stop() {}
 
-    public default void setPoistion() {}
+    public default void setPoistion(double setPoint) {}
 
-    public default void setVolts() {}
+    public default void setVolts(double volts) {}
+
+    public default void configurePID(double kP, double kI, double kD) {}
 }
