@@ -14,9 +14,10 @@ public class Manager {
 
     // I feel like im doing something terribly wrong
 
-    Map<String, Subsystem> subsystems;
-    Map<String, ManagerState> states;
-    ManagerState state;
+    private Map<String, Subsystem> subsystems;
+    private Map<String, Trigger> transitions;
+    private Map<String, ManagerState> states;
+    private ManagerState state;
 
     public Manager() {
         subsystems = new HashMap<>();
@@ -34,5 +35,21 @@ public class Manager {
         states.put(state.getStateName(), state);
     }
 
-    public void addTransition() {}
+    public void addTransition(String transitionName, Trigger trigger) {
+        transitions.put(transitionName, trigger);
+    }
+
+    private void checkTransitions() {
+        // Chat did I cook or am I cooked?
+        for (String transition : transitions.keySet()) {
+            if (transitions.get(transition).getInitialState() == state.getStateName()) {
+                state = transitions.get(transition).getEndState();
+                state.runRunnable();
+            }
+        }
+    }
+
+    public void periodic() {
+        checkTransitions();
+    }
 }

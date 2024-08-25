@@ -3,7 +3,7 @@ package frc.robot.abstraction.subsystems;
 import edu.wpi.first.wpilibj.DriverStation;
 
 public abstract class Subsystem {
-    // Just Think about It ok?
+    // This is like the turn tuning abstraction but worse
 
     protected String subsytemName;
     protected State defaultState;

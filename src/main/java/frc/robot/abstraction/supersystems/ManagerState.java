@@ -4,6 +4,7 @@ public class ManagerState {
     
     String stateName;
     Runnable runnable;
+    
     public ManagerState(String stateName, Runnable runnable) {
         this.stateName = stateName;
         this.runnable = runnable;
