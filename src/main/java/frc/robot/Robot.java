@@ -20,6 +20,7 @@ import frc.robot.abstraction.subsystems.arm.ArmRealIO;
 import frc.robot.abstraction.subsystems.arm.ArmSimIO;
 import frc.robot.abstraction.supersystems.Manager;
 import frc.robot.abstraction.supersystems.ManagerState;
+import frc.robot.abstraction.supersystems.Trigger;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -62,6 +63,7 @@ public class Robot extends TimesliceRobot {
    */
   @Override
   public void robotInit() { 
+    // This is AWFUL
     Map<String, MotorConfigs> armMotors = new HashMap<>();
 
     manager.addSubsystem(
@@ -77,6 +79,8 @@ public class Robot extends TimesliceRobot {
       "Intaking", 
       () -> manager.getSubsystem("Intake Arm").setState(new State("Intaking", 0))
     ));
+
+    manager.addTransition("Arm go Out", new Trigger("IDLE", manager.getState("Intaking"), () -> true));
   }
 
   @Override

@@ -18,9 +18,12 @@ public class Manager {
     private Map<String, Trigger> transitions;
     private Map<String, ManagerState> states;
     private ManagerState state;
+    // For logging
+    private String lastTransition;
 
     public Manager() {
         subsystems = new HashMap<>();
+        lastTransition = "";
     }
 
     public void addSubsystem(Subsystem subsystem) {
@@ -35,16 +38,22 @@ public class Manager {
         states.put(state.getStateName(), state);
     }
 
+    public ManagerState getState(String stateKey) {
+        return states.get(stateKey);
+    }
+
     public void addTransition(String transitionName, Trigger trigger) {
         transitions.put(transitionName, trigger);
     }
 
     private void checkTransitions() {
         // Chat did I cook or am I cooked?
-        for (String transition : transitions.keySet()) {
-            if (transitions.get(transition).getInitialState() == state.getStateName()) {
-                state = transitions.get(transition).getEndState();
+        for (String transitionKey : transitions.keySet()) {
+            Trigger transition = transitions.get(transitionKey);
+            if (transition.getInitialState() == state.getStateName()) {
+                state = transition.getEndState();
                 state.runRunnable();
+                lastTransition = transitionKey;
             }
         }
     }
