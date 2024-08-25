@@ -21,6 +21,8 @@ public class TalonFXMotorGroup implements MotorGroupIO {
         motors.put(leaderName, new TalonFX(leaderID));
         leader = motors.get(leaderName);
         leader.setInverted(invertLeader);
+        // Zero Leader
+        leader.setPosition(0);
     }
 
     public void setVolts(double volts) {

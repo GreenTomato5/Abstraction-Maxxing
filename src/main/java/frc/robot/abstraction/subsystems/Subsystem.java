@@ -15,6 +15,9 @@ public abstract class Subsystem {
         this.state = this.defaultState;
     }
 
+    public State getDefaultState() {
+        return defaultState;
+    }
 
     public void runState() {
 

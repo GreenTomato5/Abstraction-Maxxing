@@ -3,7 +3,7 @@ package frc.robot.abstraction.subsystems.intake;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 
-public class IntakeSimIO {
+public class IntakeSimIO implements IntakeIO {
     DCMotorSim sim;
     PIDController controller;
 

@@ -7,6 +7,6 @@ public final class Constants {
             REAL;
         }
         
-        public static final RobotMode mode = RobotMode.SIM;
+        public static final RobotMode MODE = RobotMode.SIM;
     }
 }

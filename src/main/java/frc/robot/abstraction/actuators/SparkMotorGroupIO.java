@@ -20,6 +20,8 @@ public class SparkMotorGroupIO implements MotorGroupIO {
         motors.put(leaderName, new CANSparkMax(leaderID, motorType));
         leader = motors.get(leaderName);
         leaderEncoder = leader.getEncoder();
+        // Zero Leader
+        leaderEncoder.setPosition(0);
         leader.setInverted(invertLeader);
         leaderEncoder.setPositionConversionFactor(2 * Math.PI);
     }

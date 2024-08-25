@@ -18,16 +18,30 @@ public class Manager {
     private Map<String, Trigger> transitions;
     private Map<String, ManagerState> states;
     private ManagerState state;
+    private ManagerState defaultState;
     // For logging
     private String lastTransition;
 
     public Manager() {
-        subsystems = new HashMap<>();
-        lastTransition = "";
+        this.defaultState = new ManagerState("Placeholder", () -> doNothing());
+        this.state = defaultState;
+        this.subsystems = new HashMap<>();
+        this.lastTransition = "";
     }
 
     public void addSubsystem(Subsystem subsystem) {
         subsystems.put(subsystem.getName(), subsystem);
+    }
+
+    private void doNothing() {
+        return;
+    }
+
+    // Call this once, idk what happens if you do it multiple times
+    public void setDefaultState(ManagerState defaulState) {
+        this.defaultState = defaulState;
+        state = defaulState;
+        state.runRunnable();
     }
 
     public Subsystem getSubsystem(String subsytemName) {
@@ -40,6 +54,14 @@ public class Manager {
 
     public ManagerState getState(String stateKey) {
         return states.get(stateKey);
+    }
+    
+    public String getLastTransition() {
+        return lastTransition;
+    }
+
+    public ManagerState getDefaultState() {
+        return defaultState;
     }
 
     public void addTransition(String transitionName, Trigger trigger) {
