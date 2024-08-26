@@ -87,7 +87,6 @@ public class Robot extends TimesliceRobot {
     // Subsystem Config
 
 	// Intake Pivot
-			// Only 1 intake pivot, so u dont need extra followers
 		Map<String, MotorConfigs> intakePivotFollowerMotors = new HashMap<>() {{}};
 		ArmIO intakePivotIO = 
 			Constants.GeneralConstants.MODE == RobotMode.SIM ? 
