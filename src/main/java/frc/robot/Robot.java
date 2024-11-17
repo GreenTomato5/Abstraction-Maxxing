@@ -9,7 +9,7 @@ import java.util.Map;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.TimesliceRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
@@ -40,36 +40,20 @@ import frc.robot.abstraction.supersystems.Trigger;
  * build.gradle file in the
  * project.
  */
-public class Robot extends TimesliceRobot {
+public class Robot extends TimedRobot {
   /** Robot constructor. */
   // Nah this is peak, timeslice > fodder
 
   Manager manager;
 
   public Robot() {
-    // Robot Periodic is the time to allocate to robot periodic functions,
-    // controller period is total time all schedules operations should take
-    super(0.005, 0.02);
 
     this.manager = new Manager();
 
     // LiveWindow causes drastic overruns in robot periodic functions that will
     // interfere with controllers
     LiveWindow.disableAllTelemetry();
-
-    // This sounded time wastey so I commented it out 😴
-
-    // // Runs for 2 ms after robot periodic functions
-    // schedule(() -> {}, 0.002);
-
-    // // Runs for 2 ms after first controller function
-    // schedule(() -> {}, 0.002);
-
-    // Manager whatever
-    schedule(() -> {
-      manager.periodic();
-    }, 0.005);
-
+ 
   }
 
   /**
@@ -177,6 +161,7 @@ public class Robot extends TimesliceRobot {
 
   @Override
   public void robotPeriodic() {
+	manager.periodic();
   }
 
   @Override
